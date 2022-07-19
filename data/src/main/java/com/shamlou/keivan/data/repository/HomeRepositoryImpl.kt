@@ -1,6 +1,5 @@
 package com.shamlou.keivan.data.repository
 
-import android.util.Log
 import com.shamlou.keivan.domain.model.ErrorModel
 import com.shamlou.keivan.domain.model.TickerDomain
 import com.shamlou.keivan.domain.repository.HomeRepository
@@ -8,6 +7,7 @@ import com.shamlou.keivan.domain.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -28,9 +28,6 @@ class HomeRepositoryImpl(
     // each time goes through hashmap and randomly selects a price
     // for each stock and then returns list of TickerDomain
     override fun getTickers(): Flow<Resource<List<TickerDomain>>> = flow {
-
-        // emits loading at first, it may took a while to load
-        emit(Resource.loading())
 
         // check whether items are already fetched or not
         // if items are not present, we go read file
@@ -67,7 +64,7 @@ class HomeRepositoryImpl(
 
             // if for any reason price was not present, we generate a random price
             val randomPrice = tickersHashMap[key]?.random() ?: (Random().nextFloat() * 50 + 50);
-           result.add(TickerDomain(key, randomPrice.toString()))
+           result.add(TickerDomain(key, DecimalFormat("#.##").format(randomPrice)))
         }
 
         //emitting the result

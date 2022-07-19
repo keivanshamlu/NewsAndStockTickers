@@ -28,7 +28,7 @@ fun TickersComposable(allTickers: List<TickerDomain>) {
 
                     .padding(start = 8.dp)
                     .height(IntrinsicSize.Min)
-                    .width(IntrinsicSize.Min),
+                    .width(110.dp),
                 elevation = 4.dp,
                 backgroundColor = MaterialTheme.colors.ItemBackgroundColor
             ) {

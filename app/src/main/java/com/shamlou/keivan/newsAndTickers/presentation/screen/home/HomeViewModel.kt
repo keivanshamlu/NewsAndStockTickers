@@ -18,6 +18,7 @@ class HomeViewModel @Inject constructor(
 
     // holds state of tickers for example loading, error, success
     // also holds the error data and list of tickers
+    // holds loading state at first
     private val _tickers = MutableStateFlow<Resource<List<TickerDomain>>>(Resource.loading())
     val tickers: StateFlow<Resource<List<TickerDomain>>>
         get() = _tickers
