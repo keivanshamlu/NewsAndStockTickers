@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NewsAndStockTicker</string>
+    <string name="toast_error">Something happened . Please try again .</string>
+    <string name="details">Details</string>
+</resources>
