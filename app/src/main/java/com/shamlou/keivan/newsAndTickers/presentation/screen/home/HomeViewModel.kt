@@ -55,7 +55,7 @@ class HomeViewModel @Inject constructor(
     // viewModelScope for closing things when we are out side of this screen
     fun getTickers() = viewModelScope.launch {
 
-        useCaseGetTickers.invoke(Unit).collect{
+        useCaseGetTickers.execute(Unit).collect{
 
             _tickers.tryEmit(it)
         }
@@ -64,7 +64,7 @@ class HomeViewModel @Inject constructor(
     // get news and set on _new variable
     private fun getNews() = viewModelScope.launch {
 
-        useCaseGetNews.invoke(Unit).collect{
+        useCaseGetNews.execute(Unit).collect{
 
             _news.tryEmit(it)
         }
