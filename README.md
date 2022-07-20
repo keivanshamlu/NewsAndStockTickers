@@ -1,0 +1,16 @@
+## <br/><br/>Built With 🛠
+- [gson]  I used gson to convert json string to kotlin data model, I could use JsonObject
+- and Json Array but this library is supported and tested and writing such a thing is out
+- side of scope of code challenge but let me now if it's required to convert json to kotlin data class manually
+- [mockk] I used mockk to mock dependencies so I can stub , spy to test different scenarios on a class , other choice
+- was mockito but mockk works better with android
+- [coil] I used Coil because it is designed to be used in Kotlin, so the code is more concise and cleaner in general 
+- glide have a better performance but since our app is not image sensitive(like a gallery) I decided to go with coil
+- [hilt] I used hilt because I wanted my project too have build time graph checks, other choice was dagger but I did't
+- want that complexity in the project, so I decided to go with hilt which is a simplified version of dagger, koin is a 
+- service locator and I don't like to use it in best practices because it's error prone, but it's simple too...
+- [compose material] I decided to implement this UI with compose, i wanted the declarative behavior of compose in my practice,
+- i could  use xml with databinding or viewbinding instead but there are not good for performance (specialy the databinding)
+- it's better to use compose to have kotlin advantages and have component cohesion
+- [coroutines] it's Lightweight, Fewer memory leaks, Jetpack integration and I like the simplicity of coroutines, I could
+- use RxJava or Java api Threads but I decided to go with couroutines because it is compatible with compose
