@@ -1,4 +1,4 @@
-package com.shamlou.keivan.domain.model
+package com.shamlou.keivan.domain.model.tickers
 
 data class TickerDomain(
     val stock: String,

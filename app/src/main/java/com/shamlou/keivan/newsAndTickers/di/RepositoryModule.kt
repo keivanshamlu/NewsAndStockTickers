@@ -1,6 +1,7 @@
 package com.shamlou.keivan.newsAndTickers.di
 
 import android.content.Context
+import com.google.gson.Gson
 import com.shamlou.keivan.data.repository.HomeRepositoryImpl
 import com.shamlou.keivan.data.repository.ReadFileFromAssets
 import com.shamlou.keivan.domain.repository.HomeRepository
@@ -21,6 +22,9 @@ object RepositoryModule {
         ReadFileFromAssets(appContext)
 
     @Provides
-    fun provideHomeRepository(fileReader: ReadFileFromAssets): HomeRepository =
-        HomeRepositoryImpl(fileReader)
+    fun provideGson(): Gson = Gson()
+
+    @Provides
+    fun provideHomeRepository(fileReader: ReadFileFromAssets, gson: Gson): HomeRepository =
+        HomeRepositoryImpl(fileReader, gson)
 }
