@@ -42,7 +42,7 @@ class HomeViewModel @Inject constructor(
 
     // bottom views (remaining items)
     val bottomNews = news.map {
-        it.data?.articles?.subList(6, it.data?.articles?.size?.minus(1) ?: 0)
+        it.data?.articles?.subList(6, it.data?.articles?.size ?: 0)
     }
 
     init {
