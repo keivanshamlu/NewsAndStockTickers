@@ -97,6 +97,19 @@ dependencies {
     // Paging 3.0
     implementation 'androidx.paging:paging-compose:1.0.0-alpha14'
 
+    testImplementation 'androidx.test:core-ktx:1.2.0'
+    testImplementation 'androidx.test.ext:junit-ktx:1.1.1'
+    testImplementation 'junit:junit:4.+'
+    testImplementation 'androidx.test:runner:1.4.0'
+    testImplementation 'androidx.test:rules:1.2.0'
+    testImplementation 'androidx.test.ext:truth:1.2.0'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'io.mockk:mockk:1.12.1'
+    testImplementation 'io.mockk:mockk-android:1.12.1'
+    testImplementation 'androidx.test:core:1.4.0-alpha06'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+
 }
 
 kapt {

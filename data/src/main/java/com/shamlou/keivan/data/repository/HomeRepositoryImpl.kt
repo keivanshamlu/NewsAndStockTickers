@@ -5,17 +5,21 @@ import com.shamlou.keivan.domain.model.ErrorModel
 import com.shamlou.keivan.domain.model.news.ResponseNewsDomain
 import com.shamlou.keivan.domain.model.tickers.TickerDomain
 import com.shamlou.keivan.domain.repository.HomeRepository
+import com.shamlou.keivan.domain.util.DefaultDispatcherProvider
+import com.shamlou.keivan.domain.util.DispatcherProvider
 import com.shamlou.keivan.domain.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import java.text.DecimalFormat
 import java.util.*
 
 
 class HomeRepositoryImpl(
     private val fileReader: ReadFileFromAssets,
-    private val gson: Gson
+    private val gson: Gson,
+    private val dispatchers: DispatcherProvider = DefaultDispatcherProvider()
 ) : HomeRepository {
 
 
@@ -71,7 +75,8 @@ class HomeRepositoryImpl(
 
         //emitting the result
         emit(Resource.success(result))
-    }.catch {
+    }.flowOn(dispatchers.io())
+        .catch {
 
         //emitting the error
         emit(Resource.error(ErrorModel(it.message ?: "")))
@@ -82,7 +87,8 @@ class HomeRepositoryImpl(
         emit(Resource.loading())
         val response = fileReader.readFile("news.json")
         emit(Resource.success(convertJsonToNewsDomain(response)))
-    }.catch {
+    }.flowOn(dispatchers.io())
+        .catch {
 
         //emitting the error
         emit(Resource.error(ErrorModel(it.message ?: "")))
